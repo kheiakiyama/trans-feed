@@ -4,6 +4,8 @@
 language: ruby
 rvm:
   - 2.5
+notifications:
+  email: false
 before_script:
   - chmod +x ./scripts/cibuild
 script: ./scripts/cibuild
