@@ -4,6 +4,7 @@
 language: ruby
 rvm:
   - 2.5
+sudo: required
 notifications:
   email: false
 before_script:
