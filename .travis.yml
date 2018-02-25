@@ -7,11 +7,12 @@ rvm:
 notifications:
   email: false
 before_script:
-  - chmod +x ./scripts/cibuild
-script: ./scripts/cibuild
+  - chmod +x ./.travis/cibuild
+  - chmod +x ./.travis/deploy-to-azure.sh
+script: ./.travis/cibuild
 after_success:
   - # deploy to blob storage
-  - .travis/deploy-to-azure.sh
+  - ./.travis/deploy-to-azure.sh
 branches:
   only:
     - master
