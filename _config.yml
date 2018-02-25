@@ -1,14 +1,14 @@
 # Site settings
-title:          Tale
-description:    "Minimal Jekyll theme for storytellers"
-baseurl:        "/tale"
+title:          trans feed
+description:    "Translated Feed from en-us to ja-jp"
+baseurl:        "."
 url:            "https://chesterhow.github.io"
 
 # Author
 author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
+  name:         kheiakiyama
+  url:          https://cv.kheiakiyama.com
+  email:        kheiakiyama@gmail.com
 
 # Build settings
 markdown:       kramdown
