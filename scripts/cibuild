@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
-cd jekyll
 bundle exec jekyll build
 bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
