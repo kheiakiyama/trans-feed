@@ -12,18 +12,18 @@ dotnet --version
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
 tar -xf azcopy.tar.gz
 ls -la ./azcopy
-ls -la ./_site
+ls -la ./jekyll/_site
 export PATH=$PATH:$HOME/dotnet
 dotnet --version
 dotnet ./azcopy/azcopy.dll --version
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.html" --set-content-type "text/html"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.css" --set-content-type "text/css"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.js" --set-content-type "application/javascript"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.eot" --set-content-type "application/vnd.ms-fontobject"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.woff" --set-content-type "application/font-woff"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.woff2" --set-content-type "application/font-woff2"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.otf" --set-content-type "application/font-woff"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.svg" --set-content-type "image/svg+xml"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.jpg" --set-content-type "image/jpeg"
-dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.png" --set-content-type "image/png"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.html" --set-content-type "text/html"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.css" --set-content-type "text/css"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.js" --set-content-type "application/javascript"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.eot" --set-content-type "application/vnd.ms-fontobject"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.woff" --set-content-type "application/font-woff"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.woff2" --set-content-type "application/font-woff2"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.otf" --set-content-type "application/font-woff"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.svg" --set-content-type "image/svg+xml"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.jpg" --set-content-type "image/jpeg"
+dotnet ./azcopy/azcopy.dll --source ./jekyll/_site --destination $BLOB_CONTAINER_URL --dest-key $STORAGE_KEY --recursive --quiet --include "*.png" --set-content-type "image/png"
