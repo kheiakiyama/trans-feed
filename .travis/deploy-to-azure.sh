@@ -25,6 +25,7 @@ if [ -f ./_tmp/* ]; then
   git clone origin https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/kheiakiyama/trans-feed.git ./_travis_work
   rsync -avr ./_tmp/ ./_travis_work/_posts
   cd $TRAVIS_BUILD_DIR/_travis_work
+  ls -la $TRAVIS_BUILD_DIR/_travis_work/_posts
   git add -A
   git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
   git push origin master
