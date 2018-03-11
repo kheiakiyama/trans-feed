@@ -24,6 +24,7 @@ dotnet ./azcopy/azcopy.dll --source $BLOB_TRANSLATED_POSTS_URL --source-key $STO
 git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/kheiakiyama/trans-feed.git $TRAVIS_BUILD_DIR/_travis_work
 rsync -avr $TRAVIS_BUILD_DIR/_tmp/ $TRAVIS_BUILD_DIR/_travis_work/_posts
 cd $TRAVIS_BUILD_DIR/_travis_work
+ls -la $TRAVIS_BUILD_DIR/_travis_work/_posts
 git add -A
 git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
 git push origin master
