@@ -19,17 +19,14 @@ dotnet --version
 dotnet ./azcopy/azcopy.dll --version
 
 # add posts if exists
-mkdir ./_tmp
+mkdir $TRAVIS_BUILD_DIR/_tmp
 dotnet ./azcopy/azcopy.dll --source $BLOB_TRANSLATED_POSTS_URL --source-key $STORAGE_KEY --destination ./_tmp --recursive --quiet
-if [ -f ./_tmp/* ]; then
-  git clone origin https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/kheiakiyama/trans-feed.git ./_travis_work
-  rsync -avr ./_tmp/ ./_travis_work/_posts
-  cd $TRAVIS_BUILD_DIR/_travis_work
-  git add -A
-  git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
-  git push origin master
-  exit 0 #skip deploy for waiting next build
-fi
+git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/kheiakiyama/trans-feed.git $TRAVIS_BUILD_DIR/_travis_work
+rsync -avr $TRAVIS_BUILD_DIR/_tmp/ $TRAVIS_BUILD_DIR/_travis_work/_posts
+cd $TRAVIS_BUILD_DIR/_travis_work
+git add -A
+git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
+git push origin master
 
 # deploy to azure blob storage
 dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTENTS_URL --dest-key $STORAGE_KEY --recursive --quiet
