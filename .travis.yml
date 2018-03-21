@@ -9,7 +9,11 @@ notifications:
   email: false
 before_script:
   - chmod +x ./.travis/cibuild
+  - chmod +x ./.travis/install-azcopy.sh
+  - chmod +x ./.travis/copy-translated-from-blob.sh
   - chmod +x ./.travis/deploy-to-azure.sh
+  - ./.travis/install-azcopy.sh
+  - ./.travis/copy-translated-from-blob.sh
 script: ./.travis/cibuild
 after_success:
   - # deploy to blob storage
