@@ -49,6 +49,7 @@ git clone https://$FUNCTION_GIT_USERNAME:$FUNCTION_GIT_PASSWORD@$FUNCTION_APP_NA
 cd $TRAVIS_BUILD_DIR/.travis
 ruby ./make-jekyll-proxies.rb ../_site $TRAVIS_BUILD_DIR/_function_proxy
 ls -la $TRAVIS_BUILD_DIR/_function_proxy
+cd $TRAVIS_BUILD_DIR/_function_proxy
 git add -A
 git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
 git push origin master
