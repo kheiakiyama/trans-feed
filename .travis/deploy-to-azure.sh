@@ -18,17 +18,6 @@ export PATH=$PATH:$HOME/dotnet
 dotnet --version
 dotnet ./azcopy/azcopy.dll --version
 
-# add posts if exists
-mkdir $TRAVIS_BUILD_DIR/_tmp
-dotnet ./azcopy/azcopy.dll --source $BLOB_TRANSLATED_POSTS_URL --source-key $STORAGE_KEY --destination ./_tmp --recursive --quiet
-git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/kheiakiyama/trans-feed.git $TRAVIS_BUILD_DIR/_travis_work
-rsync -avr $TRAVIS_BUILD_DIR/_tmp/ $TRAVIS_BUILD_DIR/_travis_work/_posts
-cd $TRAVIS_BUILD_DIR/_travis_work
-ls -la $TRAVIS_BUILD_DIR/_travis_work/_posts
-git add -A
-git commit -m "Build:$TRAVIS_BUILD_NUMBER Commit:$TRAVIS_COMMIT $TRAVIS_COMMIT_MESSAGE"
-git push origin master
-
 # deploy to azure blob storage
 cd $TRAVIS_BUILD_DIR
 dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTENTS_URL --dest-key $STORAGE_KEY --recursive --quiet
