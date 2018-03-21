@@ -47,7 +47,7 @@ dotnet ./azcopy/azcopy.dll --source ./_site --destination $BLOB_CONTENTS_URL --d
 mkdir $TRAVIS_BUILD_DIR/_function_proxy
 git clone https://$FUNCTION_GIT_USERNAME:$FUNCTION_GIT_PASSWORD@$FUNCTION_APP_NAME.scm.azurewebsites.net:443/$FUNCTION_APP_NAME.git $TRAVIS_BUILD_DIR/_function_proxy
 cd $TRAVIS_BUILD_DIR/.travis
-ruby ./make-jekyll-proxies.rb ../_site $TRAVIS_BUILD_DIR/_function_proxy
+ruby ./make-jekyll-proxies.rb $TRAVIS_BUILD_DIR/_site $TRAVIS_BUILD_DIR/_function_proxy/
 ls -la $TRAVIS_BUILD_DIR/_function_proxy
 cd $TRAVIS_BUILD_DIR/_function_proxy
 git add -A
