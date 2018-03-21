@@ -1,23 +1,20 @@
 # trans-feed
-trans-feed build Translated feeds as your favorite language
+trans-feed build by jekyll and Azure components
 
-## How To Install
+## [Demo](https://trans-feed.azurewebsites.net/)
 
-### BitBucket
+`feedUrl`: `https://azure.microsoft.com/en-us/blog/feed/`
 
-1. [Create Consumer](https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Createaconsumer)
+## Structure
 
-2. Open browser
-https://bitbucket.org/site/oauth2/authorize
+### translate
+![translate](https://raw.githubusercontent.com/kheiakiyama/trans-feed/master/structure/translate.png)
 
-3. Copy code  
-You use this code on next step.
+### hosting
+![hosting](https://raw.githubusercontent.com/kheiakiyama/trans-feed/master/structure/hosting.png)
 
-```
-curl -X POST -u "client_id:secret" \
-  https://bitbucket.org/site/oauth2/access_token \
-  -d grant_type=authorization_code -d code={code}
-```
+### deployment
+![deployment](https://raw.githubusercontent.com/kheiakiyama/trans-feed/master/structure/deployment.png)
 
 ## tale
 -------
