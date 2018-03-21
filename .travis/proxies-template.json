@@ -13,6 +13,12 @@
         },
         "backendUri": "http://transfeedclouddemo.blob.core.windows.net/contents/about/index.html"
       },
+      "blob-feed": {
+        "matchCondition": {
+          "route": "/feed.xml"
+        },
+        "backendUri": "http://transfeedclouddemo.blob.core.windows.net/contents/feed.xml"
+      },
       "blob-asserts": {
         "matchCondition": {
             "route": "/assets/{*file}"
