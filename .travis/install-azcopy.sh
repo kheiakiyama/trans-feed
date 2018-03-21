@@ -11,7 +11,6 @@ dotnet --version
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
 tar -xf azcopy.tar.gz
 ls -la ./azcopy
-ls -la ./_site
 export PATH=$PATH:$HOME/dotnet
 dotnet --version
 dotnet ./azcopy/azcopy.dll --version
