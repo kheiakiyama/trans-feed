@@ -2,7 +2,7 @@
 title:          trans feed
 description:    "Translated Feed from en-us to ja-jp"
 baseurl:        "https://trans-feed.azurewebsites.net"
-url:            "https://chesterhow.github.io"
+url:            "https://trans-feed.azurewebsites.net"
 
 # Author
 author:
