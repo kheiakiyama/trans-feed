@@ -3,7 +3,7 @@
 # - STORAGE_KEY
 language: ruby
 rvm:
-  - 2.5
+  - 2.6
 sudo: required
 notifications:
   email: false
