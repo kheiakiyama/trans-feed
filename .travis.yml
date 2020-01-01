@@ -8,6 +8,7 @@ sudo: required
 notifications:
   email: false
 before_install:
+  - gem update bundler
   - travis_retry gem update --system || travis_retry gem update --system 2.7.8
 before_script:
   - chmod +x ./.travis/cibuild
