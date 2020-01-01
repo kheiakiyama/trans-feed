@@ -21,9 +21,8 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - script: |
-        sudo apt-get install git
-        git --version
-      displayName: 'Install git'
+        sudo apt-get install -y git gcc build-essential libreadline-dev zlib1g-dev
+      displayName: 'Install dependencies of installing ruby'
     - script: |
         git clone https://github.com/rbenv/rbenv.git ~/.rbenv
         cd ~/.rbenv && src/configure && make -C src
@@ -35,6 +34,7 @@ stages:
         git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
         ~/.rbenv/bin/rbenv install $(rubyVersion)
         ~/.rbenv/bin/rbenv global $(rubyVersion)
+        ruby --version
       displayName: 'Install ruby'
     - script: |
         sudo gem install bundler
