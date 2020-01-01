@@ -32,6 +32,9 @@ stages:
         azcopy --version
       displayName: 'Install azcopy'
     - script: |
+        bundle install
+      displayName: 'Bundle Install'
+    - script: |
         chmod +x $(Build.Repository.LocalPath)/.travis/cibuild
         $(Build.Repository.LocalPath)/.travis/cibuild
       displayName: 'Run jekyll build'
