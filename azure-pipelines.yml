@@ -33,8 +33,8 @@ stages:
         source ~/.bashrc
         ls -l ~/.rbenv/bin/
         git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-        rbenv install $(rubyVersion)
-        rbenv global $(rubyVersion)
+        ~/.rbenv/bin/rbenv install $(rubyVersion)
+        ~/.rbenv/bin/rbenv global $(rubyVersion)
       displayName: 'Install ruby'
     - script: |
         sudo gem install bundler
