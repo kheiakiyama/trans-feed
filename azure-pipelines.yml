@@ -17,12 +17,19 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - script: sudo apt-get install ruby
+    - script: |
+        sudo apt-get install ruby
+        ruby -v
       displayName: 'Install ruby'
+    - script: |
+        gem install bundler
+        bundle -v
+      displayName: 'Install bundler'
     - script: |
         wget https://aka.ms/downloadazcopy-v10-linux
         tar -xvf downloadazcopy-v10-linux
         sudo cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
+        azcopy --version
       displayName: 'Install azcopy'
     - script: |
         chmod +x $(Build.Repository.LocalPath)/.travis/cibuild
