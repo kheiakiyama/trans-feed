@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    displayName: 'Jekyll build contents' 
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: apt-get install ruby
+      displayName: 'Install ruby'
+    - script: |
+        wget https://aka.ms/downloadazcopy-v10-linux
+        tar -xvf downloadazcopy-v10-linux
+        cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
+      displayName: 'Install azcopy'
+    - script: |
+        chmod +x $(Build.Repository.LocalPath)/.travis/cibuild
+        $(Build.Repository.LocalPath)/.travis/cibuild
+      displayName: 'Run jekyll build'
