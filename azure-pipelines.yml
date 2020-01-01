@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  rubyVersion: '2.5.7'
+  rubyVersion: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
 
 stages:
 - stage: Build
