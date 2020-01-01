@@ -29,7 +29,8 @@ stages:
         addToPath: true
       displayName: 'Install ruby'
     - script: |
-        sudo gem install bundler
+        ruby --version
+        gem install bundler
         bundle -v
       displayName: 'Install bundler'
     - script: |
