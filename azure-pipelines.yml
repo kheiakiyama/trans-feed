@@ -22,7 +22,7 @@ stages:
         ruby -v
       displayName: 'Install ruby'
     - script: |
-        gem install bundler
+        sudo gem install bundler
         bundle -v
       displayName: 'Install bundler'
     - script: |
