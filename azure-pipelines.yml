@@ -44,14 +44,14 @@ stages:
         azcopy --version
       displayName: 'Install azcopy'
     - script: |
-        bundle install
-      displayName: 'Bundle Install'
-    - script: |
         mkdir $(Agent.TempDirectory)/_tmp
-        azcopy --source $(BlobTranslatedPostsUrl) --source-key $(storageKey) --destination $(Agent.TempDirectory)/_tmp --recursive --quiet
+        azcopy copy $(BlobPathWithSas) $(Agent.TempDirectory)/_tmp --recursive=true
         rsync -avr $(Agent.TempDirectory)/_tmp/ ./_posts
         ls -la ./_posts
       displayName: 'Copy current posts to local'
+    - script: |
+        bundle install
+      displayName: 'Bundle Install'
     - script: |
         chmod +x $(Build.Repository.LocalPath)/.travis/cibuild
         $(Build.Repository.LocalPath)/.travis/cibuild
