@@ -45,7 +45,7 @@ stages:
       displayName: 'Install azcopy'
     - script: |
         mkdir $(Agent.TempDirectory)/_tmp
-        azcopy copy $(BlobPathWithSas) $(Agent.TempDirectory)/_tmp --recursive=true
+        azcopy copy $(BlobPathWithSas) $(Agent.TempDirectory)/_tmp/ --recursive=true
         rsync -avr $(Agent.TempDirectory)/_tmp/ ./_posts
         ls -la ./_posts
       displayName: 'Copy current posts to local'
