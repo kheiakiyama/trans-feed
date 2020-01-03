@@ -10,7 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  rubyVersion: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
+  - group: KeyVaultVariableGroup
+  - name: rubyVersion
+    value: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
+  - name: BlobTranslatedPostsUrl
+    value: 'https://transfeedclouddemo.blob.core.windows.net/translated'
 
 stages:
 - stage: Build
@@ -42,6 +46,12 @@ stages:
     - script: |
         bundle install
       displayName: 'Bundle Install'
+    - script: |
+        mkdir $(Agent.TempDirectory)/_tmp
+        azcopy --source $(BlobTranslatedPostsUrl) --source-key $(storageKey) --destination $(Agent.TempDirectory)/_tmp --recursive --quiet
+        rsync -avr $(Agent.TempDirectory)/_tmp/ ./_posts
+        ls -la ./_posts
+      displayName: 'Copy current posts to local'
     - script: |
         chmod +x $(Build.Repository.LocalPath)/.travis/cibuild
         $(Build.Repository.LocalPath)/.travis/cibuild
