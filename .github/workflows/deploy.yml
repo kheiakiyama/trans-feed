@@ -1,0 +1,82 @@
+name: "deploy"
+on: # rebuild master branch changes
+  push:
+    branches:
+      - master
+      - azureblob
+
+env:
+  - name: rubyVersion
+    value: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
+  - name: storageName
+    value: 'transfeedclouddemo'
+  - name: translatedContainerName
+    value: 'translated'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # - script: |
+    #     sudo apt-get install -y git gcc build-essential libreadline-dev zlib1g-dev
+    #   displayName: 'Install dependencies of installing ruby'
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: $(rubyVersion)
+    - name: Set up bundler
+      run: gem install bundler
+    - uses: kheiakiyama/install-azcopy-action@v1.0.1
+      with: 
+        version: 'v10'
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: 'Copy current posts to local'
+      run: |
+        mkdir ./_tmp
+        azcopy_v10 copy "https://$(storageName).blob.core.windows.net/$(translatedContainerName)" ./_tmp/ --recursive=true
+        rsync -avr ./_tmp/ ./_posts
+        ls -la ./_posts
+    - name: nokogiri dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install libxml2 libxslt1-dev
+    - name: jekyll build
+      run: |
+        bundle install --jobs 4
+        chmod +x ./.travis/cibuild
+        ./.travis/cibuild
+      env:
+        NOKOGIRI_USE_SYSTEM_LIBRARIES: false
+    - name: Upload jekyll output
+      uses: actions/upload-artifact@v1
+      with:
+        name: jekyll
+        path: './_site'
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - uses: kheiakiyama/install-azcopy-action@v1.0.1
+      with: 
+        version: 'v10'
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Download jekyll output
+      uses: actions/download-artifact@v1
+      with:
+        name: jekyll
+    - name: azcopy upload jekyll content
+      run: |
+        azcopy_v10 --version | grep 'azcopy'
+        azcopy_v10 sync ./jekyll "$BLOB_CONTAINER_URL" --recursive=true --delete-destination=true
+      env:
+        BLOB_CONTAINER_URL: 'https://$(storageName).blob.core.windows.net/$web'
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    # - name: Azure CLI script
+    #   uses: azure/CLI@v1
+    #   with:
+    #     inlineScript: |
+    #       az cdn endpoint purge -g kheiakiyama.com --profile-name kheiakiyama-cdn -n cv-kheiakiyama --content-paths '/*'
