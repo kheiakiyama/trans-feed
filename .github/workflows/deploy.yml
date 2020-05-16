@@ -29,7 +29,10 @@ jobs:
     - name: 'Copy current posts to local'
       run: |
         mkdir ./_tmp
-        azcopy_v10 copy "$BLOB_CONTAINER_URL" ./_tmp/ --recursive=true
+#        azcopy_v10 copy "$BLOB_CONTAINER_URL" ./_tmp/ --recursive=true
+        echo "$BLOB_CONTAINER_URL"
+        echo "https://$(STORAGE_NAME).blob.core.windows.net/$(TRANSLATED_CONTAINER_NAME)"
+        echo "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME"
         rsync -avr ./_tmp/ ./_posts
         ls -la ./_posts
       env:
