@@ -6,9 +6,9 @@ on: # rebuild master branch changes
       - azureblob
 
 env:
-  - RUBY_VERSION: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
-  - STORAGE_NAME: 'transfeedclouddemo'
-  - TRANSLATED_CONTAINER_NAME: 'translated'
+  RUBY_VERSION: '2.5.5' #available versions 2.4.6,2.5.5,2.6.3
+  STORAGE_NAME: 'transfeedclouddemo'
+  TRANSLATED_CONTAINER_NAME: 'translated'
 
 jobs:
   build:
