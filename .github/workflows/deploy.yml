@@ -29,7 +29,7 @@ jobs:
     - name: 'Copy current posts to local'
       run: |
         mkdir ./_tmp
-        azcopy_v10 copy "$BLOB_CONTAINER_URL" ./_tmp/ --recursive=true
+        echo "$BLOB_CONTAINER_URL" ./_tmp/ --recursive=true
         rsync -avr ./_tmp/ ./_posts
         ls -la ./_posts
       env:
