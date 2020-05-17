@@ -67,7 +67,7 @@ jobs:
       run: |
         azcopy_v10 --version | grep 'azcopy'
         echo "https://$STORAGE_NAME.blob.core.windows.net/\$web"
-        azcopy_v10 sync ./jekyll "https://$STORAGE_NAME.blob.core.windows.net/$web" --recursive=true --delete-destination=true
+        azcopy_v10 sync ./jekyll "https://$STORAGE_NAME.blob.core.windows.net/\$web" --recursive=true --delete-destination=true
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
