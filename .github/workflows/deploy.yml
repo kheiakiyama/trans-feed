@@ -29,13 +29,11 @@ jobs:
     - name: 'Copy current posts to local'
       run: |
         mkdir ./_tmp
-        echo "$BLOB_CONTAINER_URL"
-        echo "https://$(STORAGE_NAME).blob.core.windows.net/$(TRANSLATED_CONTAINER_NAME)"
-        echo "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME"
+        azcopy_v10 copy "$BLOB_CONTAINER_URL" ./_tmp/ --recursive=true
         rsync -avr ./_tmp/ ./_posts
         ls -la ./_posts
       env:
-        BLOB_CONTAINER_URL: 'https://$(STORAGE_NAME).blob.core.windows.net/$(TRANSLATED_CONTAINER_NAME)'
+        BLOB_CONTAINER_URL: 'https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME'
     - name: nokogiri dependencies
       run: |
         sudo apt-get update
@@ -71,7 +69,7 @@ jobs:
         azcopy_v10 --version | grep 'azcopy'
         azcopy_v10 sync ./jekyll "$BLOB_CONTAINER_URL" --recursive=true --delete-destination=true
       env:
-        BLOB_CONTAINER_URL: 'https://$(STORAGE_NAME).blob.core.windows.net/$web'
+        BLOB_CONTAINER_URL: 'https://$STORAGE_NAME.blob.core.windows.net/$web'
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
