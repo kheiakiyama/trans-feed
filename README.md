@@ -8,9 +8,9 @@ Translates RSS feeds in your favorite language and hosts static sites.
 
 ## deploy setting
 ```
-az ad sp create-for-rbac --years 100 --sdk-auth true --scopes {RESOURCE_GROUP_ID}
+az ad sp create-for-rbac --name "trans-feed" --years 100 --sdk-auth true --scopes {RESOURCE_GROUP_ID}
 # put result to github secret as `AZURE_CREDENTIALS`
-az role assignment create --role "Storage Blob Data Owner" --assignee-object-id {OBJECT_ID} --assignee-principal-type ServicePrincipal
+az role assignment create --role "Storage Blob Data Owner" --assignee-object-id {OBJECT_ID} --assignee-principal-type ServicePrincipal --scope {RESOURCE_GROUP_ID}
 ```
 
 ## Structure
