@@ -30,7 +30,7 @@ jobs:
       run: |
         mkdir ./_tmp
         echo "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME"
-        azcopy_v10 copy "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME" ./_tmp/ --recursive=true
+        azcopy_v10 copy "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME" ./_tmp/ --recursive=true || true
         rsync -avr ./_tmp/ ./_posts
         ls -la ./_posts
     - name: nokogiri dependencies
