@@ -71,8 +71,8 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    # - name: Azure CLI script
-    #   uses: azure/CLI@v1
-    #   with:
-    #     inlineScript: |
-    #       az cdn endpoint purge -g kheiakiyama.com --profile-name kheiakiyama-cdn -n cv-kheiakiyama --content-paths '/*'
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az cdn endpoint purge -g trans-feed.kheiakiyama.com --profile-name trans-feed -n trans-feed --content-paths '/*'
