@@ -3,7 +3,6 @@ on: # rebuild master branch changes
   push:
     branches:
       - master
-      - azureblob
 
 env:
   STORAGE_NAME: 'transfeedclouddemo'
