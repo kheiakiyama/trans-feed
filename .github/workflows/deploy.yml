@@ -13,9 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # - script: |
-    #     sudo apt-get install -y git gcc build-essential libreadline-dev zlib1g-dev
-    #   displayName: 'Install dependencies of installing ruby'
     - uses: actions/checkout@v2
     - uses: actions/setup-ruby@v1
       with:
@@ -75,4 +72,4 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az cdn endpoint purge -g trans-feed.kheiakiyama.com --profile-name trans-feed -n trans-feed --content-paths '/*'
+          az cdn endpoint purge -g trans-feed --profile-name trans-feed -n trans-feed --content-paths '/*'
