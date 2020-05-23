@@ -6,6 +6,13 @@ Translates RSS feeds in your favorite language and hosts static sites.
 
 `feedUrl`: `https://azure.microsoft.com/en-us/blog/feed/`
 
+## deploy setting
+```
+az ad sp create-for-rbac --name "trans-feed" --years 100 --sdk-auth true --scopes {RESOURCE_GROUP_ID}
+# put result to github secret as `AZURE_CREDENTIALS`
+az role assignment create --role "Storage Blob Data Owner" --assignee-object-id {OBJECT_ID} --assignee-principal-type ServicePrincipal --scope {RESOURCE_GROUP_ID}
+```
+
 ## Structure
 
 ### translate

@@ -13,6 +13,8 @@ author:
 # Build settings
 markdown:       kramdown
 
+exclude: [.github, Gemfile, Gemfile.lock, README.md, travis.sh, azure-pipelines.yml, Dockerfile]
+
 # Assets
 sass:
   sass_dir:     _sass
