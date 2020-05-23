@@ -38,8 +38,7 @@ jobs:
     - name: jekyll build
       run: |
         bundle install --jobs 4
-        chmod +x ./.travis/cibuild
-        ./.travis/cibuild
+        bundle exec jekyll build
       env:
         NOKOGIRI_USE_SYSTEM_LIBRARIES: false
     - name: Upload jekyll output
