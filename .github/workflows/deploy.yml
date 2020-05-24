@@ -1,4 +1,4 @@
-name: "deploy"
+name: "Azure CDN and Blob static website CD"
 on: # rebuild master branch changes
   push:
     branches:
