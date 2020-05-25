@@ -1,10 +1,10 @@
 name: "Azure CDN and Blob static website CD"
-on: # rebuild master branch changes
-  push:
-    branches:
-      - master
-  repository_dispatch:
-    types: [action_trigger]
+# on: # rebuild master branch changes
+#   push:
+#     branches:
+#       - master
+#   repository_dispatch:
+#     types: [action_trigger]
 
 env:
   STORAGE_NAME: 'transfeedclouddemo'

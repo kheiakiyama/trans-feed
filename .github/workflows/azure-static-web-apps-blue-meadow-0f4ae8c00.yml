@@ -8,6 +8,8 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
     - master
+  repository_dispatch:
+    types: [action_trigger]
 
 env:
   STORAGE_NAME: 'transfeedclouddemo'
