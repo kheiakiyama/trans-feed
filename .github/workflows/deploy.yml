@@ -1,4 +1,8 @@
 name: "Azure CDN and Blob static website CD"
+on:
+  push:
+    branches-ignore:
+      - '**'
 # on: # rebuild master branch changes
 #   push:
 #     branches:
