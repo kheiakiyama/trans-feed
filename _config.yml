@@ -1,8 +1,8 @@
 # Site settings
 title:          trans feed
 description:    "Translated Feed from en-us to ja-jp"
-baseurl:        "https://trans-feed.azurewebsites.net"
-url:            "https://trans-feed.azurewebsites.net"
+baseurl:        "https://trans-feed.kheiakiyama.com"
+url:            "https://trans-feed.kheiakiyama.com"
 
 # Author
 author:
