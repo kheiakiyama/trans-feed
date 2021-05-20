@@ -2,7 +2,7 @@
 trans-feed build by jekyll and Azure components.
 Translates RSS feeds in your favorite language and hosts static sites.
 
-## [Demo](https://trans-feed.azurewebsites.net/)
+## [Demo](https://trans-feed.kheiakiyama.com/)
 
 `feedUrl`: `https://azure.microsoft.com/en-us/blog/feed/`
 
