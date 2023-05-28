@@ -4,7 +4,8 @@ Translates RSS feeds in your favorite language and hosts static sites.
 
 ## [Demo](https://trans-feed.kheiakiyama.com/)
 
-`feedUrl`: `https://azure.microsoft.com/en-us/blog/feed/`
+`feedUrl`: ~~https://azure.microsoft.com/en-us/blog/feed/~~
+`https://azurecomcdn.azureedge.net/en-us/updates/feed/`
 
 ## deploy setting
 ```
