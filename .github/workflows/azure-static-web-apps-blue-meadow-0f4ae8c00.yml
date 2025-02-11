@@ -35,8 +35,9 @@ jobs:
         mkdir ./_tmp
         echo "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME"
         azcopy_v10 copy "https://$STORAGE_NAME.blob.core.windows.net/$TRANSLATED_CONTAINER_NAME" ./_tmp/ --recursive=true || true
-        rsync -avr ./_tmp/ ./_posts
+        rsync -avr ./_tmp/$TRANSLATED_CONTAINER_NAME ./_posts
         ls -la ./_posts
+        ls -la ./_posts/$TRANSLATED_CONTAINER_NAME
     - name: nokogiri dependencies
       run: |
         sudo apt-get update
