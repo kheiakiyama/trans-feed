@@ -1,11 +1,10 @@
 # trans-feed
-trans-feed build by jekyll and Azure components.
+trans-feed build by hugo and Azure components.
 Translates RSS feeds in your favorite language and hosts static sites.
 
 ## [Demo](https://trans-feed.kheiakiyama.com/)
 
-`feedUrl`: ~~https://azure.microsoft.com/en-us/blog/feed/~~
-`https://azurecomcdn.azureedge.net/en-us/updates/feed/`
+`feedUrl`: `https://azurecomcdn.azureedge.net/en-us/updates/feed/`
 
 ## deploy setting
 ```
@@ -27,4 +26,4 @@ az role assignment create --role "Storage Blob Data Owner" --assignee-object-id 
 
 ## tale
 -------
-This design is powered by [tale](https://chesterhow.github.io/tale)
+This design is powered by [nostyleplease theme](https://github.com/hanwenguo/hugo-theme-nostyleplease)
