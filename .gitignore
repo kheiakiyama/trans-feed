@@ -1,4 +1,7 @@
 _site/
 .sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+
+# Hugo default output directory
+/public
+/resources/_gen
+/_site
