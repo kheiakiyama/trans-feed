@@ -18,4 +18,4 @@ title = "posts by category"
 
 [[entries]]
 title = "rss"
-url = "index.xml"
+url = "feed.xml"
