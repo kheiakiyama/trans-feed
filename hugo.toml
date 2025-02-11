@@ -2,3 +2,7 @@ baseURL = 'https://trans-feed.kheiakiyama.com/'
 languageCode = 'ja-jp'
 title = 'trans feed'
 theme = "nostyleplease"
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[markup.goldmark.renderer]
+  unsafe = true
